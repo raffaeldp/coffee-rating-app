@@ -57,7 +57,7 @@ SAMPLES.forEach(([name, description], i) => {
   const quality = 1 + rand() * 4; // each Coffee has its own "true" level so averages differ
   const count = 2 + Math.floor(rand() * 9);
   for (let n = 0; n < count; n++) {
-    const stars = Math.min(5, Math.max(1, Math.round(quality + (rand() - 0.5) * 2)));
+    const stars = Math.min(5, Math.max(0.5, Math.round((quality + (rand() - 0.5) * 2) * 2) / 2)); // half-star steps
     const scale = () => 1 + Math.floor(rand() * 5);
     db.insert(ratings)
       .values({

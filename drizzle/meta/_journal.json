@@ -15,6 +15,13 @@
       "when": 1793193372273,
       "tag": "0001_stiff_blacklash",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1793200192386,
+      "tag": "0002_flaky_emma_frost",
+      "breakpoints": true
     }
   ]
 }

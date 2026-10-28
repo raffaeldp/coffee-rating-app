@@ -8,6 +8,7 @@ import { loadedCoffees, machineOr404 } from "@/lib/queries";
 import { drinkLabel } from "@/lib/machines";
 import { SCALES } from "@/lib/tasting";
 import { Photo } from "@/app/photo";
+import { Stars } from "@/app/stars";
 import { EditLink } from "@/app/edit-link";
 
 // Every Rating of one Coffee on this Machine, newest first
@@ -46,8 +47,7 @@ export default async function CoffeeRatings({ params }: { params: Promise<{ toke
         return (
           <section key={r.id} className="card">
             <div>
-              <span className="star-text">{"★".repeat(r.stars)}</span>
-              <span className="muted">{"★".repeat(5 - r.stars)}</span> · <strong>{drinkLabel(t, r.drink)}</strong>
+              <Stars value={r.stars} /> · <strong>{drinkLabel(t, r.drink)}</strong>
             </div>
             <div className="muted small">
               {r.name ?? t("common.anonymous")} · {format.dateTime(r.createdAt, { dateStyle: "medium", timeStyle: "short" })}

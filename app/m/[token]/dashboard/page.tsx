@@ -8,6 +8,7 @@ import { summarize } from "@/lib/stats";
 import { SCALES } from "@/lib/tasting";
 import { drinkLabel } from "@/lib/machines";
 import { Photo } from "@/app/photo";
+import { Stars } from "@/app/stars";
 import { EditLink } from "@/app/edit-link";
 
 const Bar = ({ value, max = 5 }: { value: number; max?: number }) => (
@@ -110,7 +111,7 @@ export default async function Dashboard({ params }: { params: Promise<{ token: s
                 “{r.comment}”
                 <div className="muted small">
                   {r.name ?? t("common.anonymous")} · {names.get(r.coffeeId)} · {drinkLabel(t, r.drink)} ·{" "}
-                  <span className="star-text">{"★".repeat(r.stars)}</span> · {date(r.createdAt)}
+                  <Stars value={r.stars} /> · {date(r.createdAt)}
                 </div>
               </li>
             ))}

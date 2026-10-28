@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { loadedCoffees, machineOr404 } from "@/lib/queries";
@@ -6,6 +5,7 @@ import { NOTES, SCALES } from "@/lib/tasting";
 import { drinkLabel } from "@/lib/machines";
 import { rate } from "@/app/actions";
 import { CoffeePicker } from "./coffee-picker";
+import { StarPicker } from "./star-picker";
 
 export default async function Rate({ params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
@@ -59,14 +59,7 @@ export default async function Rate({ params }: { params: Promise<{ token: string
 
         <fieldset>
           <legend>{t("rate.stars")}</legend>
-          <div className="stars">
-            {[5, 4, 3, 2, 1].map((n) => (
-              <Fragment key={n}>
-                <input type="radio" name="stars" id={`s${n}`} value={n} required />
-                <label htmlFor={`s${n}`} aria-label={`${n}/5`}>★</label>
-              </Fragment>
-            ))}
-          </div>
+          <StarPicker />
         </fieldset>
 
         <h2>

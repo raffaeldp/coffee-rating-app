@@ -1,4 +1,4 @@
-import { sqliteTable, integer, text } from "drizzle-orm/sqlite-core";
+import { sqliteTable, integer, real, text } from "drizzle-orm/sqlite-core";
 
 const createdAt = () =>
   integer("created_at", { mode: "timestamp" })
@@ -29,7 +29,7 @@ export const ratings = sqliteTable("ratings", {
     .notNull()
     .references(() => coffees.id),
   drink: text("drink").notNull(),
-  stars: integer("stars").notNull(),
+  stars: real("stars").notNull(), // 0.5 to 5 in steps of 0.5
   intensity: integer("intensity"),
   bitterness: integer("bitterness"),
   acidity: integer("acidity"),

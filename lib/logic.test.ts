@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { parseMachines } from "./machines.ts";
 import { summarize } from "./stats.ts";
+import { isValidStars } from "./tasting.ts";
 
 const machine = { slug: "a", name: "A", token: "0123456789abcdef", drinks: ["espresso"] };
 
@@ -25,7 +26,8 @@ test("summarize aggregates per coffee, ignoring unanswered questions", () => {
     { ...base, coffeeId: 1, drink: "espresso", stars: 4, intensity: 5, notes: ["nutty"], again: true, sugar: true },
     { ...base, coffeeId: 1, drink: "espresso", stars: 2, notes: ["nutty", "burnt"], again: false, sugar: false },
     { ...base, coffeeId: 1, drink: "lungo", stars: 3, intensity: 3 },
-    { ...base, coffeeId: 2, drink: "lungo", stars: 5 },
+    { ...base, coffeeId: 2, drink: "lungo", stars: 4.5 },
+    { ...base, coffeeId: 2, drink: "lungo", stars: 3.5 },
   ]);
   const c1 = s.get(1)!;
   assert.equal(c1.count, 3);
@@ -36,5 +38,10 @@ test("summarize aggregates per coffee, ignoring unanswered questions", () => {
   assert.deepEqual(c1.notes, { nutty: 2, burnt: 1 });
   assert.deepEqual(c1.again, { yes: 1, no: 1 });
   assert.deepEqual(c1.sugar, { yes: 1, no: 1 }); // the third rating has sugar: null (old rating), counted in neither
-  assert.equal(s.get(2)!.stars, 5);
+  assert.equal(s.get(2)!.stars, 4); // average of half stars
+});
+
+test("isValidStars accepts half-star steps from 0.5 to 5 only", () => {
+  for (const n of [0.5, 1, 3.5, 5]) assert.ok(isValidStars(n), String(n));
+  for (const n of [0, 0.25, 3.3, 5.5, NaN]) assert.ok(!isValidStars(n), String(n));
 });

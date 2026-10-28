@@ -82,12 +82,16 @@ details.help p { margin: 4px 0 8px; font-size: 0.9rem; color: var(--muted); }
 .pick input:checked + label { border-color: var(--accent); }
 .pick input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-/* stars: reversed so "checked ~ label" fills the chosen star and those before it */
-.stars { display: inline-flex; flex-direction: row-reverse; gap: 4px; }
-.stars input { position: absolute; opacity: 0; pointer-events: none; }
-.stars label { font-size: 2.2rem; line-height: 1; color: var(--border); cursor: pointer; }
-.stars input:checked ~ label { color: var(--star); }
-.stars input:focus-visible + label { outline: 2px solid var(--accent); }
+/* stars: .full / .half fill; used by the picker (buttons) and read-only displays */
+.star { color: var(--border); }
+.star.full { color: var(--star); }
+.star.half { background: linear-gradient(90deg, var(--star) 50%, var(--border) 50%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.star-picker { position: relative; display: inline-flex; align-items: center; gap: 4px; }
+.star-picker button { padding: 0; border: 0; background: none; font-size: 2.2rem; line-height: 1; cursor: pointer; }
+.star-picker button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.star-picker .muted { margin-left: 8px; }
+/* invisible but still validated, so the browser's "required" bubble points at the stars */
+.star-required { position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 
 .bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
 .bar > span { display: block; height: 100%; background: var(--accent); }

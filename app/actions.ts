@@ -10,7 +10,7 @@ import { db, uploadDir } from "@/lib/db";
 import { coffees, loads, ratings } from "@/lib/schema";
 import { backPath, machineOr404 } from "@/lib/queries";
 import { LOCALES } from "@/i18n/request";
-import { NOTES, SCALES } from "@/lib/tasting";
+import { NOTES, SCALES, isValidStars } from "@/lib/tasting";
 
 const MAX_PHOTO = 2 * 1024 * 1024;
 
@@ -78,8 +78,8 @@ export async function rate(token: string, formData: FormData) {
 
   const drink = String(formData.get("drink"));
   if (!machine.drinks.includes(drink)) throw new Error("invalid drink");
-  const stars = scale(formData, "stars");
-  if (!stars) throw new Error("stars required");
+  const stars = Number(formData.get("stars"));
+  if (!isValidStars(stars)) throw new Error("invalid stars");
 
   const notes = formData.getAll("notes").map(String);
   if (notes.some((n) => !NOTES.includes(n as never))) throw new Error("invalid note");
