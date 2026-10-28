@@ -1,6 +1,8 @@
+name: coffee-rating
+
 services:
   app:
-    build: .
+    image: ghcr.io/raffaeldp/coffee-rating-app:latest
     restart: unless-stopped
     ports:
       - "${PORT:-3000}:3000"
