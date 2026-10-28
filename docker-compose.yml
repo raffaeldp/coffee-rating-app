@@ -9,6 +9,7 @@ services:
     env_file: .env
     environment:
       TZ: ${TZ:-Europe/Paris}
+      PORT: 3000 # container port; PORT in .env only sets the host port above
     volumes:
       - data:/data
       - uploads:/uploads
