@@ -59,7 +59,11 @@ export default async function Dashboard({ params }: { params: Promise<{ token: s
                 <strong>{c.name}</strong>
                 <div>
                   {s && <span className="star-text">★ {s.stars.toFixed(1)} </span>}
-                  <span className="muted">{t("dashboard.ratings", { count: s?.count ?? 0 })}</span>
+                  {s ? (
+                    <Link href={`/m/${token}/dashboard/${c.id}`}>{t("dashboard.ratings", { count: s.count })}</Link>
+                  ) : (
+                    <span className="muted">{t("dashboard.ratings", { count: 0 })}</span>
+                  )}
                 </div>
                 <div className="muted small">{t("dashboard.lastLoaded", { date: date(c.lastLoaded) })}</div>
               </div>
