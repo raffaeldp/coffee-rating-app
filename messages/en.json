@@ -4,7 +4,9 @@
     "back": "← Back",
     "anonymous": "Anonymous",
     "zoom": "Enlarge photo",
-    "close": "Close"
+    "close": "Close",
+    "yes": "Yes",
+    "no": "No"
   },
   "home": {
     "current": "Current coffee",
@@ -46,7 +48,7 @@
     "thanks": "Thanks for your rating!",
     "noCoffee": "No coffee has been loaded into this machine yet.",
     "goRefill": "Set the loaded coffee",
-    "sugar": "I added sugar",
+    "sugar": "Sugar",
     "withSugar": "With sugar",
     "noSugar": "No sugar",
     "inMachine": "In the machine",

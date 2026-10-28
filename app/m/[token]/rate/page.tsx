@@ -47,10 +47,15 @@ export default async function Rate({ params }: { params: Promise<{ token: string
           ))}
         </fieldset>
 
-        <div className="chips" style={{ marginBottom: 16 }}>
-          <input type="checkbox" name="sugar" id="sugar" />
-          <label htmlFor="sugar">{t("rate.sugar")}</label>
-        </div>
+        <fieldset className="chips">
+          <legend>{t("rate.sugar")}</legend>
+          {(["yes", "no"] as const).map((v) => (
+            <span key={v}>
+              <input type="radio" name="sugar" id={`sugar-${v}`} value={v} defaultChecked={v === "no"} />
+              <label htmlFor={`sugar-${v}`}>{t(`common.${v}`)}</label>
+            </span>
+          ))}
+        </fieldset>
 
         <fieldset>
           <legend>{t("rate.stars")}</legend>

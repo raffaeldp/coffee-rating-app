@@ -4,7 +4,9 @@
     "back": "← Retour",
     "anonymous": "Anonyme",
     "zoom": "Agrandir la photo",
-    "close": "Fermer"
+    "close": "Fermer",
+    "yes": "Oui",
+    "no": "Non"
   },
   "home": {
     "current": "Café actuel",
@@ -46,7 +48,7 @@
     "thanks": "Merci pour ta note !",
     "noCoffee": "Aucun café n'a encore été chargé dans cette machine.",
     "goRefill": "Indiquer le café chargé",
-    "sugar": "J'ai mis du sucre",
+    "sugar": "Sucre",
     "withSugar": "Avec sucre",
     "noSugar": "Sans sucre",
     "inMachine": "Dans la machine",
