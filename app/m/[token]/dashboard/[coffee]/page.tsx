@@ -19,7 +19,7 @@ export default async function CoffeeRatings({ params }: { params: Promise<{ toke
     .select()
     .from(ratings)
     .where(and(eq(ratings.machine, machine.slug), eq(ratings.coffeeId, coffee.id)))
-    .orderBy(desc(ratings.id))
+    .orderBy(desc(ratings.createdAt), desc(ratings.id))
     .all();
   const t = await getTranslations();
   const format = await getFormatter();

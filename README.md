@@ -100,6 +100,7 @@ pnpm install
 pnpm dev            # http://localhost:3000/m/<token>
 pnpm test           # unit tests (node --test)
 pnpm db:generate    # after editing lib/schema.ts; migrations apply at startup
+pnpm db:seed        # add sample coffees and ratings to the dev database (appends, never deletes)
 docker build -t coffee-rating .   # build the image locally
 ```
 

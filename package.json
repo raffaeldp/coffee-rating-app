@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "db:generate": "drizzle-kit generate",
-    "test": "node --test lib/*.test.ts"
+    "test": "node --test lib/*.test.ts",
+    "db:seed": "node --env-file=.env scripts/seed.mts"
   },
   "dependencies": {
     "better-sqlite3": "^13.0.3",

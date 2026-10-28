@@ -26,7 +26,7 @@ export default async function Dashboard({ params }: { params: Promise<{ token: s
     .select()
     .from(ratings)
     .where(and(eq(ratings.machine, machine.slug), isNotNull(ratings.comment)))
-    .orderBy(desc(ratings.id))
+    .orderBy(desc(ratings.createdAt), desc(ratings.id))
     .limit(20)
     .all();
   const timeline = db
@@ -34,7 +34,7 @@ export default async function Dashboard({ params }: { params: Promise<{ token: s
     .from(loads)
     .innerJoin(coffees, eq(loads.coffeeId, coffees.id))
     .where(eq(loads.machine, machine.slug))
-    .orderBy(desc(loads.id))
+    .orderBy(desc(loads.createdAt), desc(loads.id))
     .limit(50)
     .all();
   const t = await getTranslations();

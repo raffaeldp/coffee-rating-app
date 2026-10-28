@@ -27,7 +27,7 @@ export function loadedCoffees(machine: string) {
     .innerJoin(coffees, eq(loads.coffeeId, coffees.id))
     .where(eq(loads.machine, machine))
     .groupBy(coffees.id)
-    .orderBy(desc(max(loads.id)))
+    .orderBy(desc(max(loads.createdAt)), desc(max(loads.id)))
     .all();
 }
 
@@ -37,7 +37,7 @@ export function currentCoffee(machine: string) {
     .from(loads)
     .innerJoin(coffees, eq(loads.coffeeId, coffees.id))
     .where(eq(loads.machine, machine))
-    .orderBy(desc(loads.id))
+    .orderBy(desc(loads.createdAt), desc(loads.id))
     .limit(1)
     .get();
 }
