@@ -1,4 +1,5 @@
-export const DRINKS = [
+// Drink keys with FR/EN names in messages/*.json. Any other drink name is shown as written.
+export const TRANSLATED_DRINKS = [
   "espresso",
   "ristretto",
   "lungo",
@@ -8,10 +9,9 @@ export const DRINKS = [
   "latte_macchiato",
   "flat_white",
   "macchiato",
-] as const;
-export type Drink = (typeof DRINKS)[number];
+];
 
-export type Machine = { slug: string; name: string; token: string; drinks: Drink[] };
+export type Machine = { slug: string; name: string; token: string; drinks: string[] };
 
 // Parses and validates the MACHINES env var. Throws on anything wrong so the app fails at startup.
 export function parseMachines(json: string | undefined): Machine[] {
@@ -26,8 +26,11 @@ export function parseMachines(json: string | undefined): Machine[] {
     if (m.token.length < 16) throw new Error(`MACHINES: token of "${m.slug}" must be at least 16 characters`);
     if (!Array.isArray(m.drinks) || m.drinks.length === 0) throw new Error(`MACHINES: "${m.slug}" needs drinks`);
     for (const d of m.drinks) {
-      if (!DRINKS.includes(d)) throw new Error(`MACHINES: unknown drink "${d}" (known: ${DRINKS.join(", ")})`);
+      if (typeof d !== "string" || !d.trim() || d.length > 50) {
+        throw new Error(`MACHINES: drink ${JSON.stringify(d)} of "${m.slug}" must be a non-empty name (max 50 chars)`);
+      }
     }
+    if (new Set(m.drinks).size !== m.drinks.length) throw new Error(`MACHINES: duplicate drink in "${m.slug}"`);
     for (const id of [`slug:${m.slug}`, `token:${m.token}`]) {
       if (seen.has(id)) throw new Error(`MACHINES: duplicate ${id.split(":")[0]} for "${m.slug}"`);
       seen.add(id);
@@ -44,4 +47,8 @@ export function getMachines() {
 
 export function machineByToken(token: string) {
   return getMachines().find((m) => m.token === token);
+}
+
+export function drinkLabel(t: (key: string) => string, drink: string) {
+  return TRANSLATED_DRINKS.includes(drink) ? t(`drinks.${drink}`) : drink;
 }

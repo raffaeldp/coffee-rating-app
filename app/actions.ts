@@ -11,7 +11,6 @@ import { coffees, loads, ratings } from "@/lib/schema";
 import { machineOr404 } from "@/lib/queries";
 import { LOCALES } from "@/i18n/request";
 import { NOTES, SCALES } from "@/lib/tasting";
-import type { Drink } from "@/lib/machines";
 
 const MAX_PHOTO = 2 * 1024 * 1024;
 
@@ -78,7 +77,7 @@ export async function rate(token: string, formData: FormData) {
   if (!wasLoaded) throw new Error("coffee never loaded on this machine");
 
   const drink = String(formData.get("drink"));
-  if (!machine.drinks.includes(drink as Drink)) throw new Error("invalid drink");
+  if (!machine.drinks.includes(drink)) throw new Error("invalid drink");
   const stars = scale(formData, "stars");
   if (!stars) throw new Error("stars required");
 

@@ -5,14 +5,16 @@ import { summarize } from "./stats.ts";
 
 const machine = { slug: "a", name: "A", token: "0123456789abcdef", drinks: ["espresso"] };
 
-test("parseMachines accepts valid config", () => {
+test("parseMachines accepts valid config, including free drink names", () => {
   assert.equal(parseMachines(JSON.stringify([machine]))[0].slug, "a");
+  assert.deepEqual(parseMachines(JSON.stringify([{ ...machine, drinks: ["café", "chocolat chaud"] }]))[0].drinks, ["café", "chocolat chaud"]);
 });
 
 test("parseMachines rejects bad config", () => {
   assert.throws(() => parseMachines(undefined));
   assert.throws(() => parseMachines("[]"));
-  assert.throws(() => parseMachines(JSON.stringify([{ ...machine, drinks: ["tea"] }])), /unknown drink/);
+  assert.throws(() => parseMachines(JSON.stringify([{ ...machine, drinks: ["  "] }])), /non-empty/);
+  assert.throws(() => parseMachines(JSON.stringify([{ ...machine, drinks: ["café", "café"] }])), /duplicate drink/);
   assert.throws(() => parseMachines(JSON.stringify([{ ...machine, token: "short" }])), /16/);
   assert.throws(() => parseMachines(JSON.stringify([machine, { ...machine, slug: "b" }])), /duplicate token/);
 });

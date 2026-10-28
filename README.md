@@ -39,7 +39,7 @@ Requirements: Docker with the Compose plugin. No need to clone the repo: the ima
    | `slug`   | Stable internal id, e.g. `paris-rdc`. Never change it once ratings exist. |
    | `name`   | Display name, e.g. `Paris – RDC`. |
    | `token`  | Secret put in the QR code URL, at least 16 characters. Generate one with `openssl rand -hex 16`. |
-   | `drinks` | Drinks the machine can brew, among `espresso`, `ristretto`, `lungo`, `americano`, `cappuccino`, `latte`, `latte_macchiato`, `flat_white`, `macchiato`. |
+   | `drinks` | Drinks the machine can brew, as a list of names, e.g. `["café","chocolat chaud"]`. Any name works and is shown as written. These keys are also translated FR/EN: `espresso`, `ristretto`, `lungo`, `americano`, `cappuccino`, `latte`, `latte_macchiato`, `flat_white`, `macchiato`. Don't rename a drink once it has ratings: old ratings keep the old name. |
 
    Example:
 

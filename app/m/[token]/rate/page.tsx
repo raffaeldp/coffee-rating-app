@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { loadedCoffees, machineOr404 } from "@/lib/queries";
 import { NOTES, SCALES } from "@/lib/tasting";
+import { drinkLabel } from "@/lib/machines";
 import { rate } from "@/app/actions";
 import { Photo } from "@/app/photo";
 
@@ -49,10 +50,10 @@ export default async function Rate({ params }: { params: Promise<{ token: string
 
         <fieldset className="chips">
           <legend>{t("rate.drink")}</legend>
-          {machine.drinks.map((d) => (
+          {machine.drinks.map((d, i) => (
             <span key={d}>
-              <input type="radio" name="drink" id={`d-${d}`} value={d} required />
-              <label htmlFor={`d-${d}`}>{t(`drinks.${d}`)}</label>
+              <input type="radio" name="drink" id={`d-${i}`} value={d} required />
+              <label htmlFor={`d-${i}`}>{drinkLabel(t, d)}</label>
             </span>
           ))}
         </fieldset>

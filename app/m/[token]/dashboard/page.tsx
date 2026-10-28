@@ -6,6 +6,7 @@ import { coffees, loads, ratings } from "@/lib/schema";
 import { loadedCoffees, machineOr404 } from "@/lib/queries";
 import { summarize } from "@/lib/stats";
 import { SCALES } from "@/lib/tasting";
+import { drinkLabel } from "@/lib/machines";
 import { Photo } from "@/app/photo";
 
 const Bar = ({ value, max = 5 }: { value: number; max?: number }) => (
@@ -69,7 +70,7 @@ export default async function Dashboard({ params }: { params: Promise<{ token: s
                 <h3>{t("dashboard.byDrink")}</h3>
                 <div className="kv">
                   {Object.entries(s.byDrink).map(([drink, d]) => (
-                    <Row key={drink} label={`${t(`drinks.${drink}`)} (${d.count})`} value={d.stars} />
+                    <Row key={drink} label={`${drinkLabel(t, drink)} (${d.count})`} value={d.stars} />
                   ))}
                 </div>
                 {SCALES.some((k) => s.scales[k] != null) && (
@@ -101,7 +102,7 @@ export default async function Dashboard({ params }: { params: Promise<{ token: s
               <li key={r.id}>
                 “{r.comment}”
                 <div className="muted small">
-                  {r.name ?? t("common.anonymous")} · {names.get(r.coffeeId)} · {t(`drinks.${r.drink}`)} ·{" "}
+                  {r.name ?? t("common.anonymous")} · {names.get(r.coffeeId)} · {drinkLabel(t, r.drink)} ·{" "}
                   <span className="star-text">{"★".repeat(r.stars)}</span> · {date(r.createdAt)}
                 </div>
               </li>
