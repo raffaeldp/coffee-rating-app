@@ -33,7 +33,7 @@ export function loadedCoffees(machine: string) {
 
 export function currentCoffee(machine: string) {
   return db
-    .select({ id: coffees.id, name: coffees.name, description: coffees.description, photo: coffees.photo })
+    .select({ id: coffees.id, name: coffees.name, description: coffees.description, photo: coffees.photo, since: loads.createdAt })
     .from(loads)
     .innerJoin(coffees, eq(loads.coffeeId, coffees.id))
     .where(eq(loads.machine, machine))

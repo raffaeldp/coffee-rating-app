@@ -12,7 +12,8 @@
     "refill": "I refilled the machine",
     "rate": "Rate my coffee",
     "dashboard": "Dashboard",
-    "qr": "Printable QR code"
+    "qr": "Printable QR code",
+    "since": "Since {date}"
   },
   "refill": {
     "title": "Which coffee is in the machine?",

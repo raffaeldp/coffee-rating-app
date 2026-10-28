@@ -12,13 +12,13 @@ const Magnifier = ({ size }: { size: number }) => (
 );
 
 // Thumbnail that opens the full photo in a native modal <dialog> (Esc, backdrop click or × closes it).
-export function ZoomPhoto({ src }: { src: string }) {
+export function ZoomPhoto({ src, className }: { src: string; className: string }) {
   const t = useTranslations("common");
   const dialog = useRef<HTMLDialogElement>(null);
   return (
     <>
       <button type="button" className="zoom" onClick={() => dialog.current?.showModal()} aria-label={t("zoom")}>
-        <img className="thumb" src={src} alt="" />
+        <img className={className} src={src} alt="" />
         <span className="zoom-icon">
           <Magnifier size={22} />
         </span>

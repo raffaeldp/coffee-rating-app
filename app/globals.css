@@ -129,3 +129,8 @@ dialog.lightbox img { display: block; width: 100%; height: 100%; object-fit: con
 
 /* a <button> that looks like a link (same as "← Retour") */
 button.link { padding: 0; border: 0; background: none; color: var(--accent); font: inherit; text-decoration: underline; cursor: pointer; }
+
+/* home: the Current Coffee card is the hero of the page */
+.thumb.large { width: 112px; height: 112px; border-radius: 12px; }
+.card.current { padding: 16px; gap: 16px; }
+.card.current strong { display: block; font-size: 1.25rem; line-height: 1.3; margin: 2px 0; }

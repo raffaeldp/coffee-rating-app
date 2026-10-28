@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getFormatter, getTranslations } from "next-intl/server";
 import { currentCoffee, machineOr404 } from "@/lib/queries";
 import { Photo } from "@/app/photo";
 
@@ -15,15 +15,19 @@ export default async function Home({
   const machine = machineOr404(token);
   const current = currentCoffee(machine.slug);
   const t = await getTranslations();
+  const format = await getFormatter();
   return (
     <>
       <h1>{machine.name}</h1>
       {thanks && <p className="banner">{t("rate.thanks")}</p>}
-      <div className="card row">
-        {current && <Photo src={current.photo} />}
+      <div className="card row current">
+        {current && <Photo src={current.photo} large />}
         <div className="grow">
-          <div className="muted">{t("home.current")}</div>
+          <div className="muted small">{t("home.current")}</div>
           <strong>{current?.name ?? t("home.none")}</strong>
+          {current && (
+            <div className="muted small">{t("home.since", { date: format.dateTime(current.since, { dateStyle: "long" }) })}</div>
+          )}
         </div>
       </div>
       <div className="stack">

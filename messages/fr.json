@@ -12,7 +12,8 @@
     "refill": "J'ai rempli la machine",
     "rate": "Noter mon café",
     "dashboard": "Tableau de bord",
-    "qr": "QR code à imprimer"
+    "qr": "QR code à imprimer",
+    "since": "Depuis le {date}"
   },
   "refill": {
     "title": "Quel café est dans la machine ?",
