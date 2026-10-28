@@ -92,6 +92,7 @@ export default async function Dashboard({ params }: { params: Promise<{ token: s
                   </p>
                 )}
                 {s.again.yes + s.again.no > 0 && <p className="small">{t("dashboard.again", s.again)}</p>}
+                {s.sugar.yes + s.sugar.no > 0 && <p className="small">{t("dashboard.sugar", s.sugar)}</p>}
               </>
             )}
           </section>

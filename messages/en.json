@@ -1,5 +1,9 @@
 {
-  "common": { "app": "Coffee rating", "back": "← Back", "anonymous": "Anonymous" },
+  "common": {
+    "app": "Coffee rating",
+    "back": "← Back",
+    "anonymous": "Anonymous"
+  },
   "home": {
     "current": "Current coffee",
     "none": "No coffee loaded yet",
@@ -38,7 +42,10 @@
     "submit": "Send my rating",
     "thanks": "Thanks for your rating!",
     "noCoffee": "No coffee has been loaded into this machine yet.",
-    "goRefill": "Set the loaded coffee"
+    "goRefill": "Set the loaded coffee",
+    "sugar": "I added sugar",
+    "withSugar": "With sugar",
+    "noSugar": "No sugar"
   },
   "dashboard": {
     "title": "Dashboard",
@@ -50,9 +57,13 @@
     "notes": "Flavour notes:",
     "again": "Would drink again: {yes} yes / {no} no",
     "comments": "Latest comments",
-    "timeline": "Load history"
+    "timeline": "Load history",
+    "sugar": "Sugar: {yes} with / {no} without"
   },
-  "qr": { "title": "QR code", "hint": "Scan to rate your coffee" },
+  "qr": {
+    "title": "QR code",
+    "hint": "Scan to rate your coffee"
+  },
   "drinks": {
     "espresso": "Espresso",
     "ristretto": "Ristretto",

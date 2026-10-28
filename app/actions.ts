@@ -94,6 +94,7 @@ export async function rate(token: string, formData: FormData) {
       ...Object.fromEntries(SCALES.map((s) => [s, scale(formData, s)])),
       notes: notes.length ? notes : null,
       again: again === "yes" ? true : again === "no" ? false : null,
+      sugar: formData.has("sugar"),
       comment: text(formData, "comment", 1000) || null,
       name: text(formData, "name", 50) || null,
     })

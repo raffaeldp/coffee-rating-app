@@ -11,7 +11,7 @@ _Avoid_: Office (an office may hold several Machines; the app does not model off
 
 **Drink**: A beverage a Machine can brew (espresso, lungo, cappuccino…). Each Machine has a fixed list.
 
-**Rating**: One person's anonymous judgement of one Drink made with one Coffee on one Machine: 1–5 stars, plus optional Tasting Answers, an optional comment and an optional name. Cannot be changed once submitted.
+**Rating**: One person's anonymous judgement of one Drink made with one Coffee on one Machine: 1–5 stars, whether sugar was added (unknown for Ratings made before this was asked), plus optional Tasting Answers, an optional comment and an optional name. Cannot be changed once submitted.
 
 **Tasting Question**: One of a fixed set of optional questions asked in every Rating (intensity, bitterness, acidity, body, flavour notes, would drink again). Each has an explanation the reviewer can reveal.
 

@@ -20,10 +20,10 @@ test("parseMachines rejects bad config", () => {
 });
 
 test("summarize aggregates per coffee, ignoring unanswered questions", () => {
-  const base = { intensity: null, bitterness: null, acidity: null, body: null, notes: null, again: null };
+  const base = { intensity: null, bitterness: null, acidity: null, body: null, notes: null, again: null, sugar: null };
   const s = summarize([
-    { ...base, coffeeId: 1, drink: "espresso", stars: 4, intensity: 5, notes: ["nutty"], again: true },
-    { ...base, coffeeId: 1, drink: "espresso", stars: 2, notes: ["nutty", "burnt"], again: false },
+    { ...base, coffeeId: 1, drink: "espresso", stars: 4, intensity: 5, notes: ["nutty"], again: true, sugar: true },
+    { ...base, coffeeId: 1, drink: "espresso", stars: 2, notes: ["nutty", "burnt"], again: false, sugar: false },
     { ...base, coffeeId: 1, drink: "lungo", stars: 3, intensity: 3 },
     { ...base, coffeeId: 2, drink: "lungo", stars: 5 },
   ]);
@@ -35,5 +35,6 @@ test("summarize aggregates per coffee, ignoring unanswered questions", () => {
   assert.equal(c1.scales.body, null);
   assert.deepEqual(c1.notes, { nutty: 2, burnt: 1 });
   assert.deepEqual(c1.again, { yes: 1, no: 1 });
+  assert.deepEqual(c1.sugar, { yes: 1, no: 1 }); // the third rating has sugar: null (old rating), counted in neither
   assert.equal(s.get(2)!.stars, 5);
 });

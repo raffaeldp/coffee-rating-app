@@ -36,6 +36,7 @@ export default async function CoffeeRatings({ params }: { params: Promise<{ toke
 
       {list.map((r) => {
         const answers = [
+          ...(r.sugar == null ? [] : [t(r.sugar ? "rate.withSugar" : "rate.noSugar")]),
           ...SCALES.flatMap((s) => (r[s] == null ? [] : [`${t(`tasting.${s}.label`)} ${r[s]}/5`])),
           ...(r.notes ?? []).map((n) => t(`tasting.notes.items.${n}`)),
           ...(r.again == null ? [] : [`${t("tasting.again.label")} ${t(`tasting.again.${r.again ? "yes" : "no"}`)}`]),

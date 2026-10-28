@@ -58,6 +58,11 @@ export default async function Rate({ params }: { params: Promise<{ token: string
           ))}
         </fieldset>
 
+        <div className="chips" style={{ marginBottom: 16 }}>
+          <input type="checkbox" name="sugar" id="sugar" />
+          <label htmlFor="sugar">{t("rate.sugar")}</label>
+        </div>
+
         <fieldset>
           <legend>{t("rate.stars")}</legend>
           <div className="stars">

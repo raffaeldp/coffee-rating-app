@@ -36,6 +36,7 @@ export const ratings = sqliteTable("ratings", {
   body: integer("body"),
   notes: text("notes", { mode: "json" }).$type<string[]>(),
   again: integer("again", { mode: "boolean" }),
+  sugar: integer("sugar", { mode: "boolean" }),
   comment: text("comment"),
   name: text("name"),
   createdAt: createdAt(),

@@ -1,5 +1,9 @@
 {
-  "common": { "app": "Coffee rating", "back": "← Retour", "anonymous": "Anonyme" },
+  "common": {
+    "app": "Coffee rating",
+    "back": "← Retour",
+    "anonymous": "Anonyme"
+  },
   "home": {
     "current": "Café actuel",
     "none": "Aucun café chargé pour l'instant",
@@ -38,7 +42,10 @@
     "submit": "Envoyer ma note",
     "thanks": "Merci pour ta note !",
     "noCoffee": "Aucun café n'a encore été chargé dans cette machine.",
-    "goRefill": "Indiquer le café chargé"
+    "goRefill": "Indiquer le café chargé",
+    "sugar": "J'ai mis du sucre",
+    "withSugar": "Avec sucre",
+    "noSugar": "Sans sucre"
   },
   "dashboard": {
     "title": "Tableau de bord",
@@ -50,9 +57,13 @@
     "notes": "Arômes cités :",
     "again": "En reprendrait : {yes} oui / {no} non",
     "comments": "Derniers commentaires",
-    "timeline": "Historique des chargements"
+    "timeline": "Historique des chargements",
+    "sugar": "Sucre : {yes} avec / {no} sans"
   },
-  "qr": { "title": "QR code", "hint": "Scanne pour noter ton café" },
+  "qr": {
+    "title": "QR code",
+    "hint": "Scanne pour noter ton café"
+  },
   "drinks": {
     "espresso": "Espresso",
     "ristretto": "Ristretto",
