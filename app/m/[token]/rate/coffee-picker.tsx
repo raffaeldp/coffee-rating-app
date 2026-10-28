@@ -26,7 +26,7 @@ export function CoffeePicker({ coffees }: { coffees: Coffee[] }) {
         </div>
       ))}
       {more > 0 && (
-        <button type="button" className="btn secondary" onClick={() => setShown(shown + 5)}>
+        <button type="button" className="link" onClick={() => setShown(shown + 5)}>
           {t("showMore", { count: more })}
         </button>
       )}
