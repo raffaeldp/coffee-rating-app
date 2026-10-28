@@ -8,6 +8,7 @@ import { loadedCoffees, machineOr404 } from "@/lib/queries";
 import { drinkLabel } from "@/lib/machines";
 import { SCALES } from "@/lib/tasting";
 import { Photo } from "@/app/photo";
+import { EditLink } from "@/app/edit-link";
 
 // Every Rating of one Coffee on this Machine, newest first
 export default async function CoffeeRatings({ params }: { params: Promise<{ token: string; coffee: string }> }) {
@@ -32,6 +33,7 @@ export default async function CoffeeRatings({ params }: { params: Promise<{ toke
           <h1 style={{ margin: 0 }}>{coffee.name}</h1>
           <span className="muted">{t("dashboard.ratings", { count: list.length })}</span>
         </div>
+        <EditLink token={token} coffeeId={coffee.id} back={`dashboard/${coffee.id}`} label={t("refill.edit")} />
       </div>
 
       {list.map((r) => {

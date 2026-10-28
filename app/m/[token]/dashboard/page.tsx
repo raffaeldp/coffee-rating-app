@@ -8,6 +8,7 @@ import { summarize } from "@/lib/stats";
 import { SCALES } from "@/lib/tasting";
 import { drinkLabel } from "@/lib/machines";
 import { Photo } from "@/app/photo";
+import { EditLink } from "@/app/edit-link";
 
 const Bar = ({ value, max = 5 }: { value: number; max?: number }) => (
   <div className="bar">
@@ -67,6 +68,7 @@ export default async function Dashboard({ params }: { params: Promise<{ token: s
                 </div>
                 <div className="muted small">{t("dashboard.lastLoaded", { date: date(c.lastLoaded) })}</div>
               </div>
+              <EditLink token={token} coffeeId={c.id} back="dashboard" label={t("refill.edit")} />
             </div>
             {c.description && <p className="small">{c.description}</p>}
             {s && (

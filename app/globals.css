@@ -101,3 +101,7 @@ ul.plain li { padding: 6px 0; border-bottom: 1px solid var(--border); }
   .top, .noprint { display: none; }
   body { background: #fff; color: #000; }
 }
+
+a.edit { display: inline-flex; padding: 10px; margin: -6px -6px 0 0; border-radius: 8px; color: var(--muted); align-self: flex-start; }
+a.edit:hover, a.edit:focus-visible { color: var(--accent); background: var(--bg); }
+

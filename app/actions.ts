@@ -8,7 +8,7 @@ import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { db, uploadDir } from "@/lib/db";
 import { coffees, loads, ratings } from "@/lib/schema";
-import { machineOr404 } from "@/lib/queries";
+import { backPath, machineOr404 } from "@/lib/queries";
 import { LOCALES } from "@/i18n/request";
 import { NOTES, SCALES } from "@/lib/tasting";
 
@@ -43,7 +43,7 @@ export async function loadCoffee(token: string, coffeeId: number) {
   redirect(`/m/${token}`);
 }
 
-export async function saveCoffee(token: string, id: number | null, formData: FormData) {
+export async function saveCoffee(token: string, id: number | null, back: string | undefined, formData: FormData) {
   const machine = machineOr404(token);
   const name = text(formData, "name", 100);
   if (!name) throw new Error("name required");
@@ -63,7 +63,7 @@ export async function saveCoffee(token: string, id: number | null, formData: For
     const created = db.insert(coffees).values({ name, description, photo }).returning({ id: coffees.id }).get();
     db.insert(loads).values({ machine: machine.slug, coffeeId: created.id }).run();
   }
-  redirect(`/m/${token}`);
+  redirect(backPath(token, back));
 }
 
 export async function rate(token: string, formData: FormData) {

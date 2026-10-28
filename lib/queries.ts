@@ -4,6 +4,11 @@ import { db } from "./db";
 import { coffees, loads } from "./schema";
 import { machineByToken } from "./machines";
 
+// Pages an edit can return to, relative to /m/<token>/. Whitelisted so the redirect can't leave the machine.
+const BACK = /^(refill|dashboard(\/\d+)?)$/;
+export const backPath = (token: string, back: string | undefined) =>
+  `/m/${token}${back && BACK.test(back) ? `/${back}` : ""}`;
+
 export function machineOr404(token: string) {
   return machineByToken(token) ?? notFound();
 }
