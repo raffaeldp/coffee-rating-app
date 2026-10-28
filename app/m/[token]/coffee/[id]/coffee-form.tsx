@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { ZoomPhoto } from "@/app/zoom-photo";
 
 // Phone photos are 4–12 MB; shrink to 1200px JPEG before upload (server caps at 2 MB).
 async function resize(file: File) {
@@ -40,8 +41,7 @@ export function CoffeeForm({ action, coffee }: { action: (formData: FormData) =>
 
   return (
     <form action={action}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      {preview && <img className="big" src={preview} alt="" />}
+      {preview && <ZoomPhoto src={preview} className="big" />}
       <label className="field" htmlFor="photo">{t("photo")}</label>
       <input id="photo" name="photo" type="file" accept="image/*" capture="environment" onChange={onPhoto} />
       <label className="field" htmlFor="name">{t("name")}</label>
