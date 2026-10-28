@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+    env_file: .env
+    environment:
+      TZ: ${TZ:-Europe/Paris}
+    volumes:
+      - data:/data
+      - uploads:/uploads
+
+volumes:
+  data:
+  uploads:

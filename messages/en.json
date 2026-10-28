@@ -1,0 +1,111 @@
+{
+  "common": { "app": "Coffee rating", "back": "← Back", "anonymous": "Anonymous" },
+  "home": {
+    "current": "Current coffee",
+    "none": "No coffee loaded yet",
+    "refill": "I refilled the machine",
+    "rate": "Rate my coffee",
+    "dashboard": "Dashboard",
+    "qr": "Printable QR code"
+  },
+  "refill": {
+    "title": "Which coffee is in the machine?",
+    "search": "Search a coffee",
+    "searchButton": "Search",
+    "load": "This one",
+    "current": "Current",
+    "edit": "Edit",
+    "none": "No coffee found.",
+    "new": "New coffee",
+    "editTitle": "Edit coffee",
+    "name": "Name",
+    "description": "Description",
+    "photo": "Photo of the package",
+    "save": "Save",
+    "saveAndLoad": "Save and load into the machine",
+    "resizing": "Preparing photo…"
+  },
+  "rate": {
+    "title": "Rate my coffee",
+    "coffee": "Coffee",
+    "drink": "Drink",
+    "stars": "Rating",
+    "optional": "Optional",
+    "tasting": "Tasting",
+    "whatIsIt": "What is it?",
+    "comment": "Comment",
+    "name": "Your first name",
+    "submit": "Send my rating",
+    "thanks": "Thanks for your rating!",
+    "noCoffee": "No coffee has been loaded into this machine yet.",
+    "goRefill": "Set the loaded coffee"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "empty": "No coffee loaded yet.",
+    "ratings": "{count, plural, =0 {no ratings} one {# rating} other {# ratings}}",
+    "lastLoaded": "Loaded on {date}",
+    "byDrink": "By drink",
+    "tasting": "Tasting (averages)",
+    "notes": "Flavour notes:",
+    "again": "Would drink again: {yes} yes / {no} no",
+    "comments": "Latest comments",
+    "timeline": "Load history"
+  },
+  "qr": { "title": "QR code", "hint": "Scan to rate your coffee" },
+  "drinks": {
+    "espresso": "Espresso",
+    "ristretto": "Ristretto",
+    "lungo": "Lungo",
+    "americano": "Americano",
+    "cappuccino": "Cappuccino",
+    "latte": "Caffè latte",
+    "latte_macchiato": "Latte macchiato",
+    "flat_white": "Flat white",
+    "macchiato": "Macchiato"
+  },
+  "tasting": {
+    "intensity": {
+      "label": "Intensity",
+      "help": "How strong the coffee feels overall: light and mild (1) or powerful and bold (5).",
+      "low": "Mild",
+      "high": "Bold"
+    },
+    "bitterness": {
+      "label": "Bitterness",
+      "help": "The bitter taste, like dark chocolate or grapefruit. Some bitterness is normal; a lot can mean a very dark roast.",
+      "low": "Barely",
+      "high": "Very bitter"
+    },
+    "acidity": {
+      "label": "Acidity",
+      "help": "The bright, mouth-watering quality, like citrus or green apple. Not a flaw: it makes coffee taste fresh.",
+      "low": "Flat",
+      "high": "Bright"
+    },
+    "body": {
+      "label": "Body",
+      "help": "How heavy the coffee feels in your mouth: thin like water (1) or thick and round like whole milk (5).",
+      "low": "Thin",
+      "high": "Thick"
+    },
+    "notes": {
+      "label": "Flavour notes",
+      "help": "Flavours you recognise. Tick whatever comes to mind; there are no wrong answers.",
+      "items": {
+        "chocolate": "Chocolate",
+        "nutty": "Nutty",
+        "fruity": "Fruity",
+        "caramel": "Caramel",
+        "floral": "Floral",
+        "burnt": "Burnt"
+      }
+    },
+    "again": {
+      "label": "Would you drink it again?",
+      "help": "If this coffee were in the machine tomorrow, would you be happy?",
+      "yes": "Yes",
+      "no": "No"
+    }
+  }
+}

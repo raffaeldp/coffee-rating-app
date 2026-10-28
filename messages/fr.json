@@ -1,0 +1,111 @@
+{
+  "common": { "app": "Coffee rating", "back": "← Retour", "anonymous": "Anonyme" },
+  "home": {
+    "current": "Café actuel",
+    "none": "Aucun café chargé pour l'instant",
+    "refill": "J'ai rempli la machine",
+    "rate": "Noter mon café",
+    "dashboard": "Tableau de bord",
+    "qr": "QR code à imprimer"
+  },
+  "refill": {
+    "title": "Quel café est dans la machine ?",
+    "search": "Rechercher un café",
+    "searchButton": "Chercher",
+    "load": "C'est celui-ci",
+    "current": "Actuel",
+    "edit": "Modifier",
+    "none": "Aucun café trouvé.",
+    "new": "Nouveau café",
+    "editTitle": "Modifier le café",
+    "name": "Nom",
+    "description": "Description",
+    "photo": "Photo du paquet",
+    "save": "Enregistrer",
+    "saveAndLoad": "Enregistrer et charger dans la machine",
+    "resizing": "Préparation de la photo…"
+  },
+  "rate": {
+    "title": "Noter mon café",
+    "coffee": "Café",
+    "drink": "Boisson",
+    "stars": "Note",
+    "optional": "Facultatif",
+    "tasting": "Dégustation",
+    "whatIsIt": "C'est quoi ?",
+    "comment": "Commentaire",
+    "name": "Ton prénom",
+    "submit": "Envoyer ma note",
+    "thanks": "Merci pour ta note !",
+    "noCoffee": "Aucun café n'a encore été chargé dans cette machine.",
+    "goRefill": "Indiquer le café chargé"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "empty": "Aucun café chargé pour l'instant.",
+    "ratings": "{count, plural, =0 {aucune note} one {# note} other {# notes}}",
+    "lastLoaded": "Chargé le {date}",
+    "byDrink": "Par boisson",
+    "tasting": "Dégustation (moyennes)",
+    "notes": "Arômes cités :",
+    "again": "En reprendrait : {yes} oui / {no} non",
+    "comments": "Derniers commentaires",
+    "timeline": "Historique des chargements"
+  },
+  "qr": { "title": "QR code", "hint": "Scanne pour noter ton café" },
+  "drinks": {
+    "espresso": "Espresso",
+    "ristretto": "Ristretto",
+    "lungo": "Lungo",
+    "americano": "Americano",
+    "cappuccino": "Cappuccino",
+    "latte": "Café latte",
+    "latte_macchiato": "Latte macchiato",
+    "flat_white": "Flat white",
+    "macchiato": "Macchiato"
+  },
+  "tasting": {
+    "intensity": {
+      "label": "Intensité",
+      "help": "La force globale du café en bouche : un café léger et doux (1) ou puissant et corsé (5).",
+      "low": "Léger",
+      "high": "Corsé"
+    },
+    "bitterness": {
+      "label": "Amertume",
+      "help": "Le goût amer, comme le chocolat noir ou le pamplemousse. Un peu d'amertume est normal ; trop peut indiquer une torréfaction très poussée.",
+      "low": "Peu amer",
+      "high": "Très amer"
+    },
+    "acidity": {
+      "label": "Acidité",
+      "help": "La vivacité qui fait saliver, comme un agrume ou une pomme verte. Ce n'est pas un défaut : elle donne de la fraîcheur au café.",
+      "low": "Plat",
+      "high": "Vif"
+    },
+    "body": {
+      "label": "Corps",
+      "help": "La texture et le poids en bouche : léger comme de l'eau (1) ou épais et rond comme du lait entier (5).",
+      "low": "Léger",
+      "high": "Épais"
+    },
+    "notes": {
+      "label": "Arômes",
+      "help": "Les saveurs que tu reconnais. Coche celles qui te viennent, il n'y a pas de mauvaise réponse.",
+      "items": {
+        "chocolate": "Chocolat",
+        "nutty": "Noisette",
+        "fruity": "Fruité",
+        "caramel": "Caramel",
+        "floral": "Floral",
+        "burnt": "Brûlé"
+      }
+    },
+    "again": {
+      "label": "Tu en reprendrais ?",
+      "help": "Si ce café était dans la machine demain, tu serais content·e ?",
+      "yes": "Oui",
+      "no": "Non"
+    }
+  }
+}
