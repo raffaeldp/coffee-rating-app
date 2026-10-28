@@ -48,7 +48,8 @@
     "sugar": "J'ai mis du sucre",
     "withSugar": "Avec sucre",
     "noSugar": "Sans sucre",
-    "inMachine": "Dans la machine"
+    "inMachine": "Dans la machine",
+    "showMore": "Voir {count, plural, one {# autre café} other {# autres cafés}}"
   },
   "dashboard": {
     "title": "Tableau de bord",

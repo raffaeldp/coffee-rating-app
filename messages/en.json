@@ -48,7 +48,8 @@
     "sugar": "I added sugar",
     "withSugar": "With sugar",
     "noSugar": "No sugar",
-    "inMachine": "In the machine"
+    "inMachine": "In the machine",
+    "showMore": "Show {count, plural, one {# more coffee} other {# more coffees}}"
   },
   "dashboard": {
     "title": "Dashboard",

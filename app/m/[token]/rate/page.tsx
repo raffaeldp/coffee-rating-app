@@ -5,13 +5,12 @@ import { loadedCoffees, machineOr404 } from "@/lib/queries";
 import { NOTES, SCALES } from "@/lib/tasting";
 import { drinkLabel } from "@/lib/machines";
 import { rate } from "@/app/actions";
-import { Photo } from "@/app/photo";
+import { CoffeePicker } from "./coffee-picker";
 
 export default async function Rate({ params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
   const machine = machineOr404(token);
-  // the 3 most recently loaded Coffees; the first is the Current Coffee
-  const coffees = loadedCoffees(machine.slug).slice(0, 3);
+  const coffees = loadedCoffees(machine.slug);
   const t = await getTranslations();
 
   if (coffees.length === 0) {
@@ -36,19 +35,7 @@ export default async function Rate({ params }: { params: Promise<{ token: string
       <Link href={`/m/${token}`}>{t("common.back")}</Link>
       <h1>{t("rate.title")}</h1>
       <form action={rate.bind(null, token)}>
-        <fieldset className="pick">
-          <legend>{t("rate.coffee")}</legend>
-          {coffees.map((c, i) => (
-            <div key={c.id}>
-              <input type="radio" name="coffee" id={`c${c.id}`} value={c.id} defaultChecked={i === 0} required />
-              <label htmlFor={`c${c.id}`}>
-                <Photo src={c.photo} zoom={false} />
-                <strong className="grow">{c.name}</strong>
-                {i === 0 && <span className="tag">{t("rate.inMachine")}</span>}
-              </label>
-            </div>
-          ))}
-        </fieldset>
+        <CoffeePicker coffees={coffees.map(({ id, name, photo }) => ({ id, name, photo }))} />
 
         <fieldset className="chips">
           <legend>{t("rate.drink")}</legend>
