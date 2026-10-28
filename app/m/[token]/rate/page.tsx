@@ -41,7 +41,7 @@ export default async function Rate({ params }: { params: Promise<{ token: string
             <div key={c.id}>
               <input type="radio" name="coffee" id={`c${c.id}`} value={c.id} defaultChecked={i === 0} required />
               <label htmlFor={`c${c.id}`}>
-                <Photo src={c.photo} />
+                <Photo src={c.photo} zoom={false} />
                 <strong>{c.name}</strong>
               </label>
             </div>

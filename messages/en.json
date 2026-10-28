@@ -2,7 +2,9 @@
   "common": {
     "app": "Coffee rating",
     "back": "← Back",
-    "anonymous": "Anonymous"
+    "anonymous": "Anonymous",
+    "zoom": "Enlarge photo",
+    "close": "Close"
   },
   "home": {
     "current": "Current coffee",
