@@ -65,7 +65,13 @@
     "again": "En reprendrait : {yes} oui / {no} non",
     "comments": "Derniers commentaires",
     "timeline": "Historique des chargements",
-    "sugar": "Sucre : {yes} avec / {no} sans"
+    "sugar": "Sucre : {yes} avec / {no} sans",
+    "sort": "Trier par",
+    "sorts": {
+      "rating": "Meilleure note",
+      "date": "Date de chargement",
+      "name": "Ordre alphabétique"
+    }
   },
   "qr": {
     "title": "QR code",

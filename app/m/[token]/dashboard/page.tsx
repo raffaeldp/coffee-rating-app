@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { and, desc, eq, isNotNull } from "drizzle-orm";
-import { getFormatter, getTranslations } from "next-intl/server";
+import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { db } from "@/lib/db";
 import { coffees, loads, ratings } from "@/lib/schema";
 import { loadedCoffees, machineOr404 } from "@/lib/queries";
-import { summarize } from "@/lib/stats";
+import { SORTS, sortCoffees, summarize, type Sort } from "@/lib/stats";
 import { SCALES } from "@/lib/tasting";
 import { drinkLabel } from "@/lib/machines";
 import { Photo } from "@/app/photo";
 import { Stars } from "@/app/stars";
 import { EditLink } from "@/app/edit-link";
+import { SortSelect } from "./sort-select";
 
 const Bar = ({ value, max = 5 }: { value: number; max?: number }) => (
   <div className="bar">
@@ -17,11 +18,19 @@ const Bar = ({ value, max = 5 }: { value: number; max?: number }) => (
   </div>
 );
 
-export default async function Dashboard({ params }: { params: Promise<{ token: string }> }) {
+export default async function Dashboard({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ token: string }>;
+  searchParams: Promise<{ sort?: string }>;
+}) {
   const { token } = await params;
+  const { sort: sortParam } = await searchParams;
+  const sort: Sort = SORTS.find((s) => s === sortParam) ?? "rating";
   const machine = machineOr404(token);
-  const list = loadedCoffees(machine.slug);
   const stats = summarize(db.select().from(ratings).where(eq(ratings.machine, machine.slug)).all());
+  const list = sortCoffees(loadedCoffees(machine.slug), stats, sort, await getLocale());
   const names = new Map(list.map((c) => [c.id, c.name]));
   const comments = db
     .select()
@@ -44,7 +53,10 @@ export default async function Dashboard({ params }: { params: Promise<{ token: s
 
   return (
     <>
-      <Link href={`/m/${token}`}>{t("common.back")}</Link>
+      <div className="row">
+        <Link className="grow" href={`/m/${token}`}>{t("common.back")}</Link>
+        {list.length > 1 && <SortSelect value={sort} />}
+      </div>
       <h1>
         {t("dashboard.title")} · {machine.name}
       </h1>

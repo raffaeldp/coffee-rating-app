@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { parseMachines } from "./machines.ts";
-import { summarize } from "./stats.ts";
+import { sortCoffees, summarize } from "./stats.ts";
 import { isValidStars } from "./tasting.ts";
 
 const machine = { slug: "a", name: "A", token: "0123456789abcdef", drinks: ["espresso"] };
@@ -44,4 +44,25 @@ test("summarize aggregates per coffee, ignoring unanswered questions", () => {
 test("isValidStars accepts half-star steps from 0.5 to 5 only", () => {
   for (const n of [0.5, 1, 3.5, 5]) assert.ok(isValidStars(n), String(n));
   for (const n of [0, 0.25, 3.3, 5.5, NaN]) assert.ok(!isValidStars(n), String(n));
+});
+
+test("sortCoffees orders by rating (unrated last), date or name", () => {
+  const d = (day: number) => new Date(2026, 0, day);
+  const list = [
+    { id: 1, name: "Éthiopie", lastLoaded: d(3) },
+    { id: 2, name: "arabica", lastLoaded: d(1) },
+    { id: 3, name: "Zèbre", lastLoaded: d(2) },
+    { id: 4, name: "Brésil", lastLoaded: d(4) },
+  ];
+  const base = { drink: "espresso", intensity: null, bitterness: null, acidity: null, body: null, notes: null, again: null, sugar: null };
+  const stats = summarize([
+    { ...base, coffeeId: 1, stars: 3.5 },
+    { ...base, coffeeId: 2, stars: 4.5 },
+    { ...base, coffeeId: 3, stars: 3.5 },
+    { ...base, coffeeId: 3, stars: 3.5 },
+  ]);
+  const ids = (sort: "rating" | "date" | "name") => sortCoffees(list, stats, sort, "fr").map((c) => c.id);
+  assert.deepEqual(ids("rating"), [2, 3, 1, 4]); // 3 beats 1 on count; 4 has no rating
+  assert.deepEqual(ids("date"), [4, 1, 3, 2]);
+  assert.deepEqual(ids("name"), [2, 4, 1, 3]); // case and accents ignored
 });

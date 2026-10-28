@@ -65,7 +65,13 @@
     "again": "Would drink again: {yes} yes / {no} no",
     "comments": "Latest comments",
     "timeline": "Load history",
-    "sugar": "Sugar: {yes} with / {no} without"
+    "sugar": "Sugar: {yes} with / {no} without",
+    "sort": "Sort by",
+    "sorts": {
+      "rating": "Best rating",
+      "date": "Load date",
+      "name": "Alphabetical"
+    }
   },
   "qr": {
     "title": "QR code",

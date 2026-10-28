@@ -53,3 +53,26 @@ export function summarize(rows: RatingRow[]): Map<number, CoffeeStats> {
   }
   return out;
 }
+
+export const SORTS = ["rating", "date", "name"] as const;
+export type Sort = (typeof SORTS)[number];
+
+// Dashboard order. "rating": best average first, unrated Coffees last; ties go to the most rated.
+// "date": most recently loaded first. "name": alphabetical in the viewer's language (accents aware).
+export function sortCoffees<C extends { id: number; name: string; lastLoaded: Date }>(
+  list: C[],
+  stats: Map<number, CoffeeStats>,
+  sort: Sort,
+  locale: string,
+): C[] {
+  const byDate = (a: C, b: C) => b.lastLoaded.getTime() - a.lastLoaded.getTime();
+  const compare = {
+    rating: (a: C, b: C) => {
+      const sa = stats.get(a.id), sb = stats.get(b.id);
+      return (sb?.stars ?? -1) - (sa?.stars ?? -1) || (sb?.count ?? 0) - (sa?.count ?? 0) || byDate(a, b);
+    },
+    date: byDate,
+    name: (a: C, b: C) => a.name.localeCompare(b.name, locale, { sensitivity: "base" }),
+  }[sort];
+  return [...list].sort(compare);
+}
