@@ -10,7 +10,8 @@ import { Photo } from "@/app/photo";
 export default async function Rate({ params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
   const machine = machineOr404(token);
-  const coffees = loadedCoffees(machine.slug);
+  // the 3 most recently loaded Coffees; the first is the Current Coffee
+  const coffees = loadedCoffees(machine.slug).slice(0, 3);
   const t = await getTranslations();
 
   if (coffees.length === 0) {
@@ -42,7 +43,8 @@ export default async function Rate({ params }: { params: Promise<{ token: string
               <input type="radio" name="coffee" id={`c${c.id}`} value={c.id} defaultChecked={i === 0} required />
               <label htmlFor={`c${c.id}`}>
                 <Photo src={c.photo} zoom={false} />
-                <strong>{c.name}</strong>
+                <strong className="grow">{c.name}</strong>
+                {i === 0 && <span className="tag">{t("rate.inMachine")}</span>}
               </label>
             </div>
           ))}

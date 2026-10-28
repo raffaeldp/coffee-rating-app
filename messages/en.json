@@ -47,7 +47,8 @@
     "goRefill": "Set the loaded coffee",
     "sugar": "I added sugar",
     "withSugar": "With sugar",
-    "noSugar": "No sugar"
+    "noSugar": "No sugar",
+    "inMachine": "In the machine"
   },
   "dashboard": {
     "title": "Dashboard",

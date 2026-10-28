@@ -47,7 +47,8 @@
     "goRefill": "Indiquer le café chargé",
     "sugar": "J'ai mis du sucre",
     "withSugar": "Avec sucre",
-    "noSugar": "Sans sucre"
+    "noSugar": "Sans sucre",
+    "inMachine": "Dans la machine"
   },
   "dashboard": {
     "title": "Tableau de bord",
